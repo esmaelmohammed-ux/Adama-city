@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adama City | Infrastructure Health Dashboard</title>
+  <meta name="description" content="Official Adama City Administration Infrastructure Health Grid. Real-time visual monitoring of Water, Streetlights, Roads, and Waste across all sub-cities.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Decorative background glows -->
+  <div class="bg-glows" aria-hidden="true">
+    <div class="glow-a"></div>
+    <div class="glow-b"></div>
+  </div>
+
+  <!-- ── Header ── -->
+  <header>
+    <div class="header-inner">
+
+      <a href="#" class="logo" id="logo-home">
+        <div class="logo-mark">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+          </svg>
+        </div>
+        <div class="logo-text">
+          <strong>Adama City</strong>
+          <span>Infrastructure Health Monitor</span>
+        </div>
+      </a>
+
+      <div class="nav-group">
+        <span class="mode-badge public" id="mode-badge">Public View</span>
+
+        <!-- Theme Toggle -->
+        <button class="btn-ghost" id="theme-btn" title="Toggle Theme" aria-label="Toggle color theme">
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="display:none;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21M4.22 4.22l1.591 1.591M16.19 16.19l1.59 1.59M3 12h2.25m13.5 0H21M4.22 19.78l1.591-1.59M16.19 7.81l1.59-1.591" />
+          </svg>
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+          </svg>
+        </button>
+
+        <!-- Official Login / Logout -->
+        <button class="btn-official" id="official-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
+          </svg>
+          <span id="official-btn-label">Official Login</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ── Main Content ── -->
+  <main>
+
+    <!-- Summary Row -->
+    <div class="summary-row">
+
+      <!-- Health Ring Gauge -->
+      <div class="gauge-card">
+        <div class="ring-wrap">
+          <svg viewBox="0 0 96 96">
+            <circle class="ring-bg" cx="48" cy="48" r="43"/>
+            <circle class="ring-fill" id="ring-fill" cx="48" cy="48" r="43"/>
+          </svg>
+          <div class="ring-label" id="ring-pct">0%</div>
+        </div>
+        <div class="gauge-info">
+          <h3>City Health Index</h3>
+          <p id="gauge-desc">Calculating service status across all sub-cities…</p>
+        </div>
+      </div>
+
+      <!-- Service Count Metrics -->
+      <div class="metrics-row">
+        <div class="metric-item green">
+          <div class="metric-num" id="count-green">0</div>
+          <div class="metric-lbl">Functional</div>
+        </div>
+        <div class="metric-item yellow">
+          <div class="metric-num" id="count-yellow">0</div>
+          <div class="metric-lbl">Maintenance</div>
+        </div>
+        <div class="metric-item red">
+          <div class="metric-num" id="count-red">0</div>
+          <div class="metric-lbl">Major Outage</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Toolbar: Search + Filters -->
+    <div class="toolbar">
+      <div class="search-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.637 10.637z"/>
+        </svg>
+        <input type="text" class="search-input" id="search-input" placeholder="Search sub-cities…" autocomplete="off">
+      </div>
+
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="All">All Regions</button>
+        <button class="filter-btn" data-filter="Red">⚠ Outage</button>
+        <button class="filter-btn" data-filter="Yellow">🔧 Maintenance</button>
+        <button class="filter-btn" data-filter="Green">✅ Healthy</button>
+      </div>
+    </div>
+
+    <!-- Sub-City Cards Grid -->
+    <div class="cards-grid" id="cards-grid">
+      <!-- Dynamically rendered by app.js -->
+    </div>
+
+  </main>
+
+  <!-- ── Passcode Modal ── -->
+  <div class="modal-bg" id="passcode-modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>Official Access</h3>
+        <button class="btn-close" id="close-passcode" title="Cancel">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:1.25rem;">
+        Enter the administration passcode to enable service-status editing across all sub-city cards.
+      </p>
+      <form id="passcode-form">
+        <label class="form-label" for="passcode-input">Administration Passcode</label>
+        <input type="password" class="form-input" id="passcode-input" placeholder="••••••••" required autocomplete="current-password">
+        <p class="err-hint" id="passcode-err">Incorrect passcode. Hint: <strong>adama2026</strong></p>
+        <button type="submit" class="btn-save">Authenticate Portal</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Status Update Modal ── -->
+  <div class="modal-bg" id="update-modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div>
+          <h3>Update Service Status</h3>
+          <p id="update-subtitle" style="font-size:0.78rem; color:var(--text-muted); margin-top:0.15rem;">Bole • Water Supply</p>
+        </div>
+        <button class="btn-close" id="close-update" title="Cancel">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <form id="update-form">
+        <input type="hidden" id="u-city-id">
+        <input type="hidden" id="u-svc-id">
+
+        <label class="form-label">Service Condition</label>
+        <div class="status-pick">
+          <input type="radio" name="svc-status" id="opt-green" value="Green" checked>
+          <label for="opt-green" class="status-opt opt-green">✅ Functional</label>
+
+          <input type="radio" name="svc-status" id="opt-yellow" value="Yellow">
+          <label for="opt-yellow" class="status-opt opt-yellow">🔧 Maintenance</label>
+
+          <input type="radio" name="svc-status" id="opt-red" value="Red">
+          <label for="opt-red" class="status-opt opt-red">🚨 Outage</label>
+        </div>
+
+        <label class="form-label" for="u-note">Status Note</label>
+        <textarea class="form-input" id="u-note" rows="3" placeholder="e.g. Main pipe burst near central market – crew dispatched." style="resize:none; font-family:var(--font-main); height: auto;"></textarea>
+
+        <button type="submit" class="btn-save">Save Update</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>© 2026 Adama City Administration — Ethiopia. Infrastructure Health Monitor.</p>
+    <p style="margin-top:0.3rem;">Emergency Line: <strong>911</strong> &nbsp;|&nbsp; <a href="#">Municipal Office Contacts</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
