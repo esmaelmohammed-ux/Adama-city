@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="light">
 
 <head>
@@ -12,7 +12,7 @@
 
 <body>
 
-
+  <!-- Decorative background glows -->
   <div class="bg-glows" aria-hidden="true">
     <div class="glow-a"></div>
     <div class="glow-b"></div>
@@ -103,7 +103,6 @@
           <div class="metric-lbl">Major Outage</div>
         </div>
       </div>
-
     </div>
 
     <!-- Toolbar: Search + Filters -->
@@ -117,9 +116,13 @@
       </div>
 
       <div class="filter-group">
-        <button class="filter-btn active" data-filter="All">All Regions</button>
+        <button class="filter-btn active" data-filter="All">
+          All Regions
+        </button>
         <button class="filter-btn" data-filter="Red">⚠ Outage</button>
-        <button class="filter-btn" data-filter="Yellow">🔧 Maintenance</button>
+        <button class="filter-btn" data-filter="Yellow">
+          🔧 Maintenance
+        </button>
         <button class="filter-btn" data-filter="Green">✅ Healthy</button>
       </div>
     </div>
@@ -128,7 +131,6 @@
     <div class="cards-grid" id="cards-grid">
       <!-- Dynamically rendered by app.js -->
     </div>
-
   </main>
 
   <!-- ── Passcode Modal ── -->
@@ -174,18 +176,18 @@
       </div>
 
       <form id="update-form">
-        <input type="hidden" id="u-city-id">
-        <input type="hidden" id="u-svc-id">
+        <input type="hidden" id="u-city-id" />
+        <input type="hidden" id="u-svc-id" />
 
         <label class="form-label">Service Condition</label>
         <div class="status-pick">
-          <input type="radio" name="svc-status" id="opt-green" value="Green" checked>
+          <input type="radio" name="svc-status" id="opt-green" value="Green" checked />
           <label for="opt-green" class="status-opt opt-green">✅ Functional</label>
 
-          <input type="radio" name="svc-status" id="opt-yellow" value="Yellow">
+          <input type="radio" name="svc-status" id="opt-yellow" value="Yellow" />
           <label for="opt-yellow" class="status-opt opt-yellow">🔧 Maintenance</label>
 
-          <input type="radio" name="svc-status" id="opt-red" value="Red">
+          <input type="radio" name="svc-status" id="opt-red" value="Red" />
           <label for="opt-red" class="status-opt opt-red">🚨 Outage</label>
         </div>
 
