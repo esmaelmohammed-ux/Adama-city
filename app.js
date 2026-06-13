@@ -1,5 +1,5 @@
 /**
- * Adama City Infrastructure Health Dashboard — Core Script
+ * Adama City Infrastructure Healt Dashboard — Core Script
  * localStorage persistence · health index math · filter engine · official mode · tooltips
  */
 
