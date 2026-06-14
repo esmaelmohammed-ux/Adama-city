@@ -201,7 +201,7 @@ main { flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; padding: 2rem 1.
 }
 @media (max-width: 750px) { .summary-row { grid-template-columns: 1fr; } }
 
-/* Gauge Card */
+/* Gauge Cad */
 .gauge-card {
   background: var(--bg-surface);
   backdrop-filter: var(--glass-blur);
